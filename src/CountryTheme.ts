@@ -1,13 +1,13 @@
 import { createTheming } from '@callstack/react-theme-provider'
 import { Platform } from 'react-native'
 import { getHeightPercent } from './ratio'
-
+import {scale} from './ratio'
 export const DEFAULT_THEME = {
   primaryColor: '#ccc',
   primaryColorVariant: '#eee',
   backgroundColor: '#ffffff',
-  onBackgroundTextColor: '#000000',
-  fontSize: 16,
+  onBackgroundTextColor: '#1f2837',
+  fontSize: scale(14),
   fontFamily: Platform.select({
     ios: 'System',
     android: 'Roboto',

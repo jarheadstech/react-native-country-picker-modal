@@ -52,6 +52,7 @@ const FlagWithSomething = memo(
     countryCode,
     withEmoji,
     withCountryNameButton,
+    withCountryCodeButton,
     withCurrencyButton,
     withCallingCodeButton,
     withFlagButton,
@@ -66,9 +67,10 @@ const FlagWithSomething = memo(
     const [state, setState] = useState({
       countryName: '',
       currency: '',
-      callingCode: ''
+      callingCode: '',
+      countrycca2:''
     })
-    const { countryName, currency, callingCode } = state
+    const { countryName, currency,countrycca2, callingCode } = state
     useEffect(() => {
       if (withCountryNameButton) {
         getCountryNameAsync(countryCode, translation)
@@ -80,6 +82,9 @@ const FlagWithSomething = memo(
         getCountryCurrencyAsync(countryCode)
           .then((currency: string) => setState({ ...state, currency }))
           .catch(console.error)
+      }
+      if (withCallingCodeButton) {
+        setState({...state, countrycca2: countryCode })
       }
 
       if (withCallingCodeButton) {
@@ -96,7 +101,8 @@ const FlagWithSomething = memo(
         />
         {countryName ? <FlagText>{countryName + ' '}</FlagText> : null}
         {currency ? <FlagText>{`(${currency}) `}</FlagText> : null}
-        {callingCode ? <FlagText>{`+${callingCode}`}</FlagText> : null}
+        {countrycca2 ? <FlagText>{`(${countrycca2}) `}</FlagText> : null}
+	{callingCode ? <FlagText>{`+${callingCode}`}</FlagText> : null}
       </View>
     )
   }
@@ -106,6 +112,7 @@ interface FlagButtonProps {
   withEmoji?: boolean
   withCountryNameButton?: boolean
   withCurrencyButton?: boolean
+  withCountryCodeButton?: boolean
   withCallingCodeButton?: boolean
   withFlagButton?: boolean
   containerButtonStyle?: StyleProp<ViewStyle>
@@ -118,13 +125,14 @@ export const FlagButton = ({
   withCountryNameButton,
   withCallingCodeButton,
   withCurrencyButton,
+  withCountryCodeButton,
   withFlagButton,
   countryCode,
   containerButtonStyle,
   onOpen
 }: FlagButtonProps) => {
   const withSomething =
-    withCountryNameButton || withCallingCodeButton || withCurrencyButton
+    withCountryNameButton || withCountryCodeButton || withCallingCodeButton || withCurrencyButton
   const { flagSizeButton: flagSize } = useTheme()
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onOpen}>
@@ -141,6 +149,7 @@ export const FlagButton = ({
               countryCode,
               withEmoji,
               withCountryNameButton,
+	      withCountryCodeButton,
               withCallingCodeButton,
               withCurrencyButton,
               withFlagButton,
@@ -160,6 +169,7 @@ export const FlagButton = ({
 FlagButton.defaultProps = {
   withEmoji: Platform.OS === 'ios',
   withCountryNameButton: false,
+  withCountryCodeButton:false,
   withCallingCodeButton: false,
   withCurrencyButton: false,
   withFlagButton: true
