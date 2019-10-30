@@ -50,6 +50,7 @@ interface CountryPickerProps {
   flatListProps?: FlatListProps<Country>
   withEmoji?: boolean
   withCountryNameButton?: boolean
+  withCountryCodeButton?: boolean
   withCurrencyButton?: boolean
   withCallingCodeButton?: boolean
   withFlagButton?: boolean
@@ -88,6 +89,7 @@ export const CountryPicker = (props: CountryPickerProps) => {
     withFilter,
     withCloseButton,
     withCountryNameButton,
+    withCountryCodeButton,
     withCallingCodeButton,
     withCurrencyButton,
     containerButtonStyle,
@@ -135,6 +137,7 @@ export const CountryPicker = (props: CountryPickerProps) => {
   const flagProp = {
     withEmoji,
     withCountryNameButton,
+    withCountryCodeButton,
     withCallingCodeButton,
     withCurrencyButton,
     withFlagButton,

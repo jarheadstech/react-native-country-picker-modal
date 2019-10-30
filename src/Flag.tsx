@@ -15,15 +15,16 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 30,
-    marginRight: 10
+    width: 32,
+    marginRight: 2
   },
   emojiFlag: {
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1 / PixelRatio.get(),
     borderColor: 'transparent',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    fontSize: 27,
   },
   imageFlag: {
     resizeMode: 'contain',

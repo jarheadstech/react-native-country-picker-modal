@@ -28,6 +28,7 @@ interface Props {
   withCurrency?: boolean
   withEmoji?: boolean
   withCountryNameButton?: boolean
+  withCountryCodeButton?: boolean
   withCurrencyButton?: boolean
   withCallingCodeButton?: boolean
   withCloseButton?: boolean
